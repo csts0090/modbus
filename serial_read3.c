@@ -29,13 +29,8 @@
 #define MyDB "SystemControl"
 #define QSIZE 256
 
-MYSQL *dp;
+MYSQL *dp ;
 MYSQL_RES *qp;
-
-char query[QSIZE]   = "INSERT INTO Schedule_data (schedule_id, station_no, address, data, time) VALUES (   1,  10, 1523, '00000000', '2015-04-24 00:00:00')";
-char query2[QSIZE]  = "UPDATE Schedule_data SET data= '      13' where address=1522 and schedule_id=1 and station_no= 11";
-char query3[QSIZE]  = "UPDATE Schedule_data SET time= '      13' where address=1522 and schedule_id=1 and station_no= 11";
-char query4[QSIZE]  = "select * from Schedule_data where schedule_id=1   and station_no=10   and address= 1521";
 
 /*----------------database_end---------------------------*/
 
@@ -50,7 +45,6 @@ typedef struct schedule
 	char period[3];
 	
 }schedule_t;
-
 
 void* schedule_thread(void *a);
 
@@ -68,15 +62,21 @@ int opendb()
         passwd[7]='7';
         passwd[8]='1';
         passwd[9]='5';
+        passwd[10]='\0';
+
+
         dp = mysql_init(NULL);
 
-	/* Use any MySQL API functions here */
 
         if(dp == NULL)
         {
                 fprintf(stderr,"mysql_init() faild\n");
                 return 2;
         }
+		/* char value = 1;
+		 mysql_options(dp, MYSQL_OPT_RECONNECT, &value);*/
+
+	
 
         mysql_real_connect(dp, MyHOST, MyNAME, passwd, MyDB, 0, NULL, 0);
         if(dp == NULL)
@@ -84,8 +84,15 @@ int opendb()
                 fprintf(stderr,"mysql_real_connect() faild\n");
                 return 3;
         }
+        	if (mysql_ping(dp)) {
+		 char value = 1;
+		 mysql_options(dp, MYSQL_OPT_RECONNECT, &value);
+		printf("Ping dp error: %s\n", mysql_error(dp));
+		} else {
+		puts("Ping OK\n");
+		}
 
-/*        if(mysql_select_db(dp, MyDB) != 0)
+/*       if(mysql_select_db(dp, MyDB) != 0)
         {
                 fprintf(stderr, "mysql_select_db() failed\n");
                 mysql_close(dp);
@@ -94,27 +101,25 @@ int opendb()
         return 0;
 }
 
-void sql_write(char *sch_id, char *station_no, char *address, char *data, char *time)
+/*void sql_write(char *sch_id, char *station_no, char *address, char *data, char *time)
 {
-        sprintf(query, "INSERT INTO Schedule_data (schedule_id, station_no, address, data, time) VALUES (   %s,  %s, %s, '%s', '%s')", sch_id, station_no, address, data, time); 
+        sprintf(query, "INSERT INTO Schedule_data (schedule_id, station_no, address, data) VALUES (  %s,  %s, %s, '%s')", sch_id, station_no, address, data); 
         printf("%s\n",query);
-}
+                if( mysql_query(dp, query))
+        {       
+                fprintf(stderr, "%s\n", mysql_error(dp));
+        }       
+}*/
 
-void sql_write2(char *sch_id,char *station_no, char *address, char *data)
-{
-        sprintf(query2, "UPDATE Schedule_data SET data= '%s' where address=%s and schedule_id=%s and station_no= %s", data, address, sch_id, station_no);
-        printf("%s\n",query2);
 
 
-}
 int server (int client_socket)
 {
     int length=10;
-    char* text;
+    char text[10];
     int ret;
 
     /* Allocate a buffer to hold the text.  */
-    text = (char*) malloc (length);
     /* Read the text itself, and print it.  */
     ret = recv(client_socket, text , length, 0);
     if(ret==0) {
@@ -287,13 +292,17 @@ int main(int argc, char *argv[])
 
 }   
 
-pthread_mutex_t beers_lock = PTHREAD_MUTEX_INITIALIZER;	
+pthread_mutex_t modbus_lock = PTHREAD_MUTEX_INITIALIZER;	
+pthread_mutex_t mysql_lock = PTHREAD_MUTEX_INITIALIZER;	
 void* schedule_thread(void* parm)
 {
-   MYSQL_ROW row;
+    //char query[QSIZE]   = "INSERT INTO Schedule_data (schedule_id, station_no, address, data, time) VALUES ( 1,10,1523, '00000000', '2015-04-24 00:00:00')";
+   
+    MYSQL_ROW row;
 
     schedule_t* temp = (schedule_t*)parm;
     printf("v v: %s \n %s \n %s %s %s %s\n",temp->sch_id,temp->sta_no, temp->addr,temp->t_start,temp->t_stop,temp->period);
+    int T=atoi(temp->period);
 
 
   struct tm time_start, time_stop;
@@ -336,12 +345,12 @@ while(1){
     	//time(&time_now);
     	//p=localtime(&time_now);
 
-	//sprintf (q3,"%d-%d-%d %d:%d:%d\n", (1900+p->tm_year),( 1+p->tm_mon), p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec);
+//	sprintf (q3,"%d-%d-%d %d:%d:%d\n", (1900+p->tm_year),( 1+p->tm_mon), p->tm_mday, p->tm_hour, p->tm_min, p->tm_sec);
         //printf("%s\n",q3);
 	
  
 
-    pthread_mutex_lock(&beers_lock);
+    pthread_mutex_lock(&modbus_lock);
     modbus_t            *ctx;
     struct timeval      timeout;
     int                 ret, i, rc, ii;
@@ -406,6 +415,7 @@ while(1){
     rc = modbus_read_registers(ctx, strtol(temp->addr, NULL, 16), strtol("1", NULL, 10), regs);
     if (rc < 0) {
         fprintf(stderr, "%s\n", modbus_strerror(errno));
+    	pthread_mutex_unlock(&modbus_lock);
     }
     else {
             printf("HOLDING REGISTERS:\n");
@@ -414,66 +424,49 @@ while(1){
                 printf("[%d]=%d\n", ii, regs[ii]);
 
             }
-    	/* Close the connection */
-    	modbus_close(ctx);
-    	modbus_free(ctx);
-    pthread_mutex_unlock(&beers_lock);
+    		/* Close the connection */
+    		modbus_close(ctx);
+    		modbus_free(ctx);
+    		pthread_mutex_unlock(&modbus_lock);
 
 
+    		pthread_mutex_lock(&mysql_lock);
+    		int err, rows, cols;
+    		err = opendb();
+    		if(err)
+    		{
+        		/*Database is not open*/
+        		return err;
+    		}
+	
 
 
-
-    pthread_mutex_lock(&beers_lock);
-    int err, rows, cols;
-    err = opendb();
-    if(err)
-    {
-        /*Database is not open*/
-        return err;
-    }
-    sprintf(query4, "select * from Schedule_data where schedule_id=%s   and station_no=%s   and address= %s",  temp->sch_id, temp->sta_no, temp->addr);
-    printf("%s\n",query4);
   
-        
-                if( mysql_query(dp, query4))
-        {       
-                fprintf(stderr, "%s\n", mysql_error(dp));
-        }       
-        
-        qp = mysql_store_result(dp);
-        if(qp != NULL){
-                /*所有執行結果都放在RAM中,由qp指著*/
-                
-                rows = mysql_num_rows(qp);
-                cols = mysql_num_fields(qp);
-                printf("row=%d: col=%d\n",rows,cols);
-                while((row = mysql_fetch_row(qp)) != NULL) 
-                mysql_free_result(qp);
+    		//sql_write(temp->sch_id,temp->sta_no, temp->addr, regs_8, q3);
+    		char query[QSIZE];
+        	sprintf(query, "INSERT INTO Schedule_data (schedule_id, station_no, address, data) VALUES (%s,%s,%s,'%s')", temp->sch_id, temp->sta_no, temp->addr, regs_8); 
+        	//strcpy(query, "select * from Schedule_data"); 
+        	printf("%s\n",query);
+                if( mysql_query(dp, query))
+       		{       
+                	fprintf(stderr, "%s\n", mysql_error(dp));
+        	}       
+        	if (mysql_ping(dp)) {
+		printf("Ping error: %s\n", mysql_error(dp));
+		} else {
+		puts("Ping OK\n");
 		}
-    //Write Data to Database
-		if(row==0){
-                	sql_write(temp->sch_id,temp->sta_no, temp->addr, regs_8, q3);
-		}else
-		{
-                	sql_write2(temp->sch_id, temp->sta_no, temp->addr, regs_8);
-		}
-
-                /*if( mysql_query(dp, query))
-                {
-                        fprintf(stderr, "%s\n", mysql_error(dp));
-                }
-                qp = mysql_store_result(dp);
-                mysql_free_result(qp);*/
-
-
+		mysql_close(dp);
+		//mysql_thread_end();
+    		pthread_mutex_unlock(&mysql_lock);
 
     	}
 
 	gettimeofday(&end, NULL);
 	timersub(&end, &start, &res);
 
-    	pthread_mutex_unlock(&beers_lock);
-    	usleep(atoi(temp->period)* 1000000  - (res.tv_sec * 1000000 + res.tv_usec));
+    	//pthread_mutex_unlock(&beers_lock);
+    	usleep(T* 1000000  - (res.tv_sec * 1000000 + res.tv_usec));
     }
     else if(time_now > timestop) {
         mysql_close(dp);
