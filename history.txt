@@ -1,0 +1,501 @@
+    7  vim client_tcp.c
+    8  make client_tcp
+    9  ./client_tcp 1064
+   10  vim client_tcp.c
+   11  make client_tcp
+   12  ./client_tcp 1064
+   13  vim client_tcp.c
+   14  make client_tcp
+   15  ./client_tcp 1064
+   16  vim client_tcp.c
+   17  make client_tcp
+   18  ./client_tcp 1064
+   19  vim client_tcp.c
+   20  make client_tcp
+   21  vim client_tcp.c
+   22  make client_tcp
+   23  ./client_tcp 1064
+   24  vim client_tcp.c
+   25  make client_tcp
+   26  ./client_tcp 1064
+   27  cat test.txt 
+   28  vim  test.txt 
+   29  df
+   30  ./client_tcp 1064
+   31  vim  test.txt 
+   32  vim client_tcp.c
+   33  vim client_tcp.c
+   34  ls
+   35  make client_tcp
+   36  vim client_tcp.c
+   37  make client_tcp
+   38  vim client_tcp.c
+   39  make client_tcp
+   40  ./client_tcp 1064
+   41  vim client_tcp.c
+   42  make client_tcp
+   43  ./client_tcp 1064
+   44  vim client_tcp.c
+   45  make client_tcp
+   46  ./client_tcp 1064
+   47  vim client_tcp.c
+   48  vim client_tcp.c
+   49  make client_tcp
+   50  ./client_tcp 1064
+   51  vim client_tcp.c
+   52  make client_tcp
+   53  ./client_tcp 1064
+   54  vim client_tcp.c
+   55  make client_tcp
+   56  ./client_tcp 1064
+   57  vim client_tcp.c
+   58  vim client_tcp.c
+   59  make client_tcp
+   60  ./client_tcp 1064
+   61  vim client_tcp.c
+   62  make client_tcp
+   63  ./client_tcp 1064
+   64  vim client_tcp.c
+   65  make client_tcp
+   66  ./client_tcp 1064
+   67  ./client_tcp 1068
+   68  ./client_tcp 1068
+   69  ./client_tcp 1068
+   70  vim client_tcp.c
+   71  make client_tcp
+   72  ./client_tcp 1068
+   73  vim client_tcp.c
+   74  make client_tcp
+   75  vim client_tcp.c
+   76  make client_tcp
+   77  ./client_tcp 1068
+   78  ./client_tcp 1064
+   79  vim client_tcp.c
+   80  make client_tcp
+   81  ./client_tcp 1064
+   82  cd modbus/libmodbus-3.0.3/src/
+   83  ls
+   84  cat client_tcp2.c
+   85  :q
+   86  ./client_serial 1064 4
+   87  ls
+   88  cd ..
+   89  ls
+   90  cd tests/
+   91  ls
+   92  cat unit-test.h
+   93  ls
+   94  cat unit-test.h
+   95  ls
+   96  cd ..
+   97  cd src/
+   98  ./client_serial 1064 8
+   99  ./client_serial2 1068 2 65535 16127
+  100  ./client_serial 1064 8
+  101  ./client_serial 1064 8
+  102  ./client_serial2 1068 2 0 17008
+  103  ./client_serial 1064 8
+  104  cd modbus/
+  105  ls
+  106  cd libmodbus-3.0.3
+  107  ls
+  108  cd src/
+  109  vim client_tcp.c
+  110  vim client_tcp2.c
+  111  ./client_tcp2 10c8 1 100
+  112  ./client_tcp 10c8 10
+  113  ./client_tcp2 10c8 1 200
+  114  vim client_tcp2.c
+  115  ./client_tcp2 1064 2 0 60
+  116  ./client_tcp 1064 4
+  117  ./client_tcp 1064 4
+  118  ./client_tcp 1064 4
+  119  ./client_tcp 1064 4
+  120  ./client_tcp 1064 4
+  121  ./client_tcp 1064 4
+  122  ./client_tcp 1064 4
+  123  ./client_tcp 1064 4
+  124  ./client_tcp 1064 4
+  125  ./client_tcp 1064 4
+  126  ./client_tcp 1064 4
+  127  ./client_tcp 1064 4
+  128  ./client_tcp 1064 4
+  129  ./client_tcp 1064 4
+  130  ./client_tcp 1064 4
+  131  ./client_tcp 1064 4
+  132  ./client_tcp2 1064 2 0 30
+  133  ./client_tcp 1064 4
+  134  ./client_tcp 1064 4
+  135  vim client_tcp2.c
+  136  ./client_tcp 1064 4
+  137  ./client_tcp 1064 4
+  138  ./client_tcp 1064 4
+  139  ./client_serial 1064 4
+  140  vim client_tcp2.c
+  141  ./client_serial 10c8 4
+  142  ./client_serial 10c8 4
+  143  vim client_tcp2.c
+  144  vim client_tcp1.c
+  145  vim client_tcp.c
+  146  ./client_tcp2 10c8 1 10
+  147  ./client_tcp2 10c8 2 10 20
+  148  vim client_tcp2.c
+  149  ./client_tcp2 10c8 1 10
+  150  ./client_serial 10c8 4
+  151  ./client_serial 10c8 4
+  152  vim client_tcp.c
+  153  /etc/init.d/apache2 restart
+  154  ./client_serial 10c8 4
+  155  ./client_serial 10c8 4
+  156  ./client_serial 10c8 4
+  157  ./client_serial 10c8 4
+  158  ./client_serial 10c8 10
+  159  vim client_tcp.c
+  160  ./client_serial2 10c8 1 sf
+  161  ./client_serial2 10c8 1 50
+  162  ./client_serial2 10c8 1 200
+  163  ./client_serial 10c8 10
+  164  vim client_tcp.c
+  165  make
+  166  make client_tcp
+  167  vim client_tcp.c
+  168  make client_tcp
+  169  ./client_tcp 10c8 5
+  170  vim client_tcp.c
+  171  ./client_tcp 10c8 5
+  172  ./client_tcp 10c8 5
+  173  ./client_tcp2 10c8 1 300
+  174  ./client_tcp 10c8 2
+  175  vim client_tcp.c
+  176  make client_tcp
+  177  ./client_tcp 10c8 2
+  178  ls
+  179  cat test.txt 
+  180  vim client_tcp.c
+  181  make client_tcp
+  182  vim client_tcp.c
+  183  make client_tcp
+  184  ./client_tcp 10c8 2
+  185  cat test.txt 
+  186  vim client_tcp.c
+  187  make client_tcp
+  188  ./client_tcp 10c8 2
+  189  cat test.txt 
+  190  mailq taiwan78619@yahoo.com.tw < test.txt 
+  191  mail
+  192  cat /etc/issue
+  193  cat /etc/issue.net 
+  194  vim client_tcp.c
+  195  make client_tcp
+  196  sendmail taiwan78619@yahoo.com.tw <test.txt 
+  197  vim client_tcp.c
+  198  vim client_tcp.c
+  199  vim client_tcp2.c
+  200  df
+  201  cd
+  202  ls
+  203  ls /media/TRANSCEND/
+  204  cp modbus/ /media/TRANSCEND/modbus2
+  205  cp -av modbus/ /media/TRANSCEND/modbus2
+  206  ls /media/TRANSCEND/
+  207  df
+  208  vim /etc/mail/sendmail.cf
+  209  top
+  210  top
+  211  ls
+  212  socat TCP4-LISTEN:5502 TCP4:192.168.1.5:502
+  213  socat TCP4-LISTEN:5502 TCP4:192.168.1.5:502
+  214  socat -d -d -d TCP4-LISTEN:5502 TCP4:192.168.1.5:502
+  215  socat -d TCP4-LISTEN:5502,fork TCP4:192.168.1.5:502
+  216  socat -d TCP4-LISTEN:5502,fork TCP4:192.168.1.5:502 &
+  217  ls
+  218  cd modbus/
+  219  ls
+  220  cd libmodbus-3.0.3
+  221  ls
+  222  cd src/
+  223  ls
+  224  cat test_endian.c 
+  225  ./test_endian 
+  226  ls
+  227  cat test_float.c
+  228  cat test_float2hex.c
+  229  cat test_hex2float.c
+  230  stty -s
+  231  stty -F -a /dev/ttyM0
+  232  stty -a -F /dev/ttyM0
+  233  stty -a -F /dev/ttyM1
+  234  minicom -s
+  235  ls
+  236  cd libmodbus-3.0.3/
+  237  ls
+  238  cd tests/
+  239  ls
+  240  ./unit-test-client 
+  241  ./unit-test-client rtu
+  242  vim unit-test-client.c
+  243  make
+  244  ./unit-test-client rtu
+  245  vim unit-test-client.c
+  246  make
+  247  ./unit-test-client rtu
+  248  vim unit-test-client.c
+  249  vim unit-test-client.c
+  250  vim unit-test-client.c
+  251  ls
+  252  cd
+  253  ls
+  254  cd /usr/
+  255  ls
+  256  cd local/
+  257  ls
+  258  cd ..
+  259  cd src
+  260  ls
+  261  man apache2
+  262  cd ..
+  263  ls\
+  264  ls
+  265  cd share/
+  266  ls
+  267  cd apache2/
+  268  ls
+  269  cd default-site/
+  270  ls
+  271  cat index.html 
+  272  /etc/init.d/apache2 start
+  273  cat index.html 
+  274  ls
+  275  cp index.html index.html_old
+  276  ls
+  277  sudo vim index.html
+  278  sudo vim index.html
+  279  ls
+  280  mv index.html_old  ..
+  281  ls
+  282  cd ..
+  283  ls
+  284  mv index.html_old default-site/
+  285  ls
+  286  cd build/
+  287  ls
+  288  cd ..
+  289  cd icons/
+  290  ls
+  291  cd ..
+  292  ls
+  293  cd default-site/
+  294  ls
+  295  cd 
+  296  ls
+  297  cd /
+  298  ls
+  299  cd var/
+  300  ls
+  301  cd www/
+  302  ls
+  303  cat index.html 
+  304  cd
+  305  cat /usr/share/apache2/default-site/index.html
+  306  cd /var/www
+  307  ls
+  308  vim index.html 
+  309  vim index.html 
+  310  apt-cache search ssmtp
+  311  apt-get install ssmtp
+  312  apt-cache search smtp
+  313  apt-get install smtp
+  314  apt-get install ssmtp
+  315  vim /etc/ssmtp/ssmtp.conf 
+  316  vim /etc/ssmtp/revaliases 
+  317  ping 127.0.0.1:25
+  318  ping localhost 25
+  319  ping localhost 
+  320  ssh localhost 25
+  321  apt-cache search telnet
+  322  apt-get install telnet
+  323  telnet localhost 25
+  324  clear
+  325  ls /var/spool/mail
+  326  netstat -ntupl
+  327  netstat -tunlp
+  328  /etc/init.d/sendmail restart
+  329  netstat -tunlp
+  330  telnet localhost 25
+  331  vim /etc/mail/sendmail.conf 
+  332  vim /etc/mail/sendmail.mc
+  333  telnet localhost 25
+  334  /etc/init.d/sendmail start
+  335  telnet localhost 25
+  336  sendmail isu10203015M@isu.edu.tw < ~/modbus/libmodbus-3.0.3/src/test.txt 
+  337  clear
+  338  telnet localhost 25
+  339  telnet localhost 25
+  340  telnet localhost 25
+  341  netstat -tunlp
+  342  telnet localhost 25
+  343  sendmail root:moxa@isu.com:isu10203015m@isu.edu.tw
+  344  sendmail root:isu10203015m@isu.edu.tw:moxa@isu.tw
+  345  mail
+  346  apt-cache search mail
+  347  apt-get install mail
+  348  dpkg -L mail
+  349  dpkg -L sendmail
+  350  vim /etc/mailname 
+  351  vim /etc/mail/cd /etc/mail
+  352  cd /etc/mail
+  353  ls
+  354  make
+  355  netstat -ntulp
+  356  telnet localhost 25
+  357  /etc/init.d/sendmail stop
+  358  /etc/init.d/sendmail start
+  359  /etc/init.d/sendmail start
+  360  telnet localhost 25
+  361  netstat -ntulp
+  362  /etc/init.d/sendmail restart
+  363  /etc/init.d/sendmail stop
+  364  /etc/init.d/sendmail start
+  365  telnet localhost 25
+  366  telnet localhost 25
+  367  telnet localhost 25
+  368  cd
+  369  cd modbus/
+  370  ls
+  371  cd libmodbus-3.0.3
+  372  ls
+  373  cd src
+  374  ls
+  375  telnet localhost 25 <test.txt 
+  376  telnet localhost 25
+  377  ./client_tcp 1521 2
+  378  cd modbus/
+  379  ls
+  380  cd libmodbus-3.0.3
+  381  ls
+  382  cd src/
+  383  ls
+  384  cat modbus.h
+  385  ./client_serial 10c8 101
+  386  ./client_serial 10c8 100
+  387  vim client_tcp.c 
+  388  vim modbus.c
+  389  vim client_tcp.c 
+  390  ./client_serial 10c8 101
+  391  vim modbus.h
+  392  vim modbus-version.h
+  393  vim modbus.h
+  394  vim modbus.c
+  395  vim modbus-private.h 
+  396  ls
+  397  cd modbus/
+  398  ls
+  399  cd libmodbus-3.0.3
+  400  ls
+  401  cd src/
+  402  ls
+  403  cat test.txt 
+  404  vim test.txt 
+  405  ./client_tcp 1064
+  406  ./client_tcp 1068
+  407  ./client_serial 1064 8
+  408  ./client_tcp 1068
+  409  ./client_serial 1064 8
+  410  ./client_serial 1064 8
+  411  ./client_tcp 1068
+  412  ./client_serial 1064 8
+  413  ./client_serial 1064 8
+  414  ./client_tcp 1068
+  415  ./client_tcp 1064
+  416  ./client_serial 1064 8
+  417  ./client_tcp 1068
+  418  ./client_tcp 1064
+  419  ./client_tcp 1068
+  420  ./client_tcp 1064
+  421  ./client_serial 1064 8
+  422  ./client_tcp 106A
+  423  ./client_serial 1064 8
+  424  ./client_tcp 1068
+  425  ls
+  426  cat test.txt 
+  427  vum client_tcp.c 
+  428  vim client_tcp.c 
+  429  make client_tcp
+  430  ls
+  431  ./test_endian 
+  432  cat test_endian.c 
+  433  clear
+  434  ./client_tcp 1064
+  435  cat test.txt 
+  436  vim test.txt 
+  437  vim client_tcp.c 
+  438  make client_tcp
+  439  ./client_tcp 1064
+  440  ./client_tcp 1064
+  441  vim client_tcp.c 
+  442  make client_tcp
+  443  cat test.txt 
+  444  vim client_tcp.c 
+  445  ./client_serial 10c8 101
+  446  ./client_serial 10c8 100
+  447  ./client_serial 102c 1
+  448  ./client_serial 112c 1
+  449  ./client_serial 10c8 100
+  450  ./client_serial 10c8 101
+  451  ./client_serial 10c8 102
+  452  ./client_serial 10c9 100
+  453  vim client_tcp.c 
+  454  ./client_serial 10c9 106
+  455  ./client_serial 10c0 106
+  456  ./client_serial 10c0 100
+  457  ./client_serial 10c0 101
+  458  ./client_serial 10c0 102
+  459  ./client_serial 10c0 103
+  460  ./client_serial 10c0 104
+  461  vim modbus.h
+  462  make client_tcp
+  463  ./client_serial 10c8 104
+  464  ./client_serial 10c8 101
+  465  ./client_serial 10c8 100
+  466  ./client_serial 10c9 100
+  467  vim client_tcp.c 
+  468  make client_tcp
+  469  vim client_tcp.c 
+  470  ./client_serial 10c9 101
+  471  ./client_serial 10c9 100
+  472  ls
+  473  cat client_tcp.c 
+  474  vim modbus.h 
+  475  vim modbus.c
+  476  vim modbus-private.h 
+  477  vim modbus-private.c
+  478  vim modbus-rtu.h
+  479  vim modbus-tcp.h
+  480  vim modbus-tcp-private.h 
+  481  vim modbus.c
+  482  vim modbus.c
+  483  id
+  484  df
+  485  who
+  486  cat /etc/fstab
+  487  ifconfig 
+  488  ifconfig 
+  489  ls
+  490  exit
+  491  ps
+  492  ps aux
+  493  ps aux
+  494  cat /etc/issue
+  495  exit
+  496  cat /proc/version 
+  497  cat /etc/issue
+  498  uname -r
+  499  uname -a
+  500  exit
+  501  history 
+  502  ls
+  503  cd modbus/
+  504  ls
+  505  cd libmodbus-3.0.3/src/
+  506  history > history.txt
+ setinterface /dev/ttyM0 1
